@@ -1,6 +1,7 @@
 package houseincome;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
 public class checkHouseIncome {
 // 가구의 소득이 어떤 값 미만인 가구들의 수를 계산하여 출력하는 프로그램
 	public static void main(String[] args) {
@@ -13,14 +14,16 @@ public class checkHouseIncome {
 		number = scan.nextInt();
 		house = new int[number];
 		
+		double high=0; // 최대 소득을 가진 가구
+		int cnt=0; //최대 가구 소득의 10%보다 작은 가구의 수
+		
+		System.out.print("각 가구의 소득을 입력하세요: ");
+		
 		try{
-			double high=0; // 최대 가구 소득
-			int cnt=0; //최대 가구 소득의 10%보다 작은 가구의 수
-			
-			System.out.print("각 가구의 소득을 입력하세요: ");
 			for(int i=0 ; i<number; i++) {
-				house[i] = scan.nextInt();
 				turn++;
+				house[i] = scan.nextInt();
+				
 				if (house[i] < 0){
 					throw new IllegalArgumentException((i+1)+"번째 가구 소득이 음수이다");
 				}
@@ -42,8 +45,8 @@ public class checkHouseIncome {
 		}catch(IllegalArgumentException e){
 			System.out.print(e.getMessage());
 		}catch(InputMismatchException e) {
-			System.out.println((turn+1)+"번째 가구 소득이 숫자가 아니다");
-			for(int j=0; j<turn; j++) {
+			System.out.println((turn)+"번째 가구 소득이 숫자가 아니다");
+			for(int j=0; j<turn-1; j++) {
 				System.out.print(house[j]+" ");
 			}			
 		}		
