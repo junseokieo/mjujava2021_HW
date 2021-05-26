@@ -6,7 +6,8 @@ import java.awt.event.*;
 import java.util.Random;
 
 public class GuessPanel extends JPanel
-{
+{// 패널을 나타내는 클래스
+	
 	private long secret;	// 비밀 번호
 	private boolean isEven;		// 홀짝 여부
 
@@ -22,7 +23,7 @@ public class GuessPanel extends JPanel
 	 
 	 // 0부터 100 사이의 임의의 정수인 비밀 번호를 생성한다
 	 Random rand = new Random();
-	 secret = rand.nextInt(100);
+	 secret = (long) (Math.random()*(100 - 0)) + 0;
 
 	 // 생성된 비밀 번호가 홀수인지 아니면 짝수인지 확인한다
 	 if(secret%2 == 0) {
@@ -30,8 +31,6 @@ public class GuessPanel extends JPanel
 	 }else {
 		 isEven = false;
 	 }
-	 System.out.println(secret);
-	 System.out.println(isEven);
 	 
      // 패널의 바탕색을 흰 색으로 한다
 	 setBackground(Color.WHITE);
@@ -77,14 +76,11 @@ public class GuessPanel extends JPanel
 	 answer.setVisible(false);
  }
 
- //  단추 누름 사건 리스너를 나타낸다
+ //  단추 누름 사건 리스너를 나타내는 클래스
  private class ButtonListener implements ActionListener
  {
 	 public void actionPerformed(ActionEvent event)
 	 {
-		 even.setVisible(false);
-		 odd.setVisible(false);
-			
 		 if(event.getSource() == odd) { //홀수를 골랐을 때
 			 if(isEven == false) { // 홀수면
 				 correct.setVisible(true);
@@ -100,6 +96,10 @@ public class GuessPanel extends JPanel
 				 }
 		 // 비밀 번호 알림 레이블을 화면에 보여지게 한다
 		 answer.setVisible(true);
+		 // 짝수 버튼이 화면에서 보여지지 않게 한다
+		 even.setVisible(false);
+		 // 홀수 버튼이 화면에서 보여지지 않게 한다
+		 odd.setVisible(false);
 		 }
 	 }
 }

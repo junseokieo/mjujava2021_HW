@@ -3,7 +3,7 @@ package panel;
 import javax.swing.*;
 
 public class Guess extends JFrame
-{
+{// 프레임을 나타내는 클래스
 	public static void main(String[] args)
 	{
 		// 프레임의 제목을 ‘홀짝 맞추기 게임’으로 한다
